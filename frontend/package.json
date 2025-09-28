@@ -7,18 +7,26 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "biome check --write --unsafe --no-errors-on-unmatched --files-ignore-unknown=true ./",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate-client": "openapi-ts"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.27.0",
     "@emotion/react": "^11.14.0",
+    "@hookform/resolvers": "^5.2.2",
     "@tanstack/react-query": "^5.90.2",
     "@tanstack/react-router": "^1.132.7",
+    "axios": "^1.12.2",
+    "lucide-react": "^0.544.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-hook-form": "^7.63.0",
+    "zod": "^4.1.11",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
+    "@hey-api/openapi-ts": "0.84.3",
     "@tanstack/react-query-devtools": "^5.90.2",
     "@tanstack/react-router-devtools": "^1.132.7",
     "@tanstack/router-plugin": "^1.132.7",
