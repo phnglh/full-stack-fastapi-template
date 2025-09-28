@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { CloseButton } from "@chakra-ui/react"
 import { createFileRoute } from "@tanstack/react-router"
 import { useEffect, useState } from "react"
 
@@ -20,6 +21,7 @@ function Index() {
       >
         Click me
       </Button>
+      <CloseButton/>
     </div>
   )
 }

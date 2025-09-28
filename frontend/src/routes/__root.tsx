@@ -30,5 +30,5 @@ export const Route = createRootRoute({
       </Suspense>
     </>
   ),
-  // notFoundComponent: () => <NotFound />,
+  notFoundComponent: () => <div>404 Not Found</div>,
 })
