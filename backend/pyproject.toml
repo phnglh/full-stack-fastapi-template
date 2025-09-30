@@ -29,7 +29,8 @@ build-backend = "poetry.core.masonry.api"
 
 [dependency-groups]
 dev = [
-    "ruff (>=0.13.2,<0.14.0)"
+    "ruff (>=0.13.2,<0.14.0)",
+    "pre-commit (>=4.3.0,<5.0.0)"
 ]
 
 [tool.ruff]
@@ -58,4 +59,3 @@ ignore = [
 [tool.ruff.lint.pyupgrade]
 # Preserve types, even if a file imports `from __future__ import annotations`.
 keep-runtime-typing = true
-
