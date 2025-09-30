@@ -9,6 +9,10 @@ function Dashboard() {
     <>
       Hi, admin
       <span>Welcome back, nice to see you again!</span>
+      <p>
+        Hi, admin
+        <span>Welcome back, nice to see you again!</span>
+      </p>
     </>
   )
 }

@@ -30,14 +30,7 @@ const SidebarItems = ({ onClose }: SidebarItemsProps) => {
     </RouterLink>
   ))
 
-  return (
-    <div>
-      <div className="px-4 py-2 text-xs font-bold uppercase tracking-wide text-gray-500">
-        Menu
-      </div>
-      <div className="flex flex-col space-y-1">{listItems}</div>
-    </div>
-  )
+  return <div className="flex flex-col space-y-1">{listItems}</div>
 }
 
 export default SidebarItems
