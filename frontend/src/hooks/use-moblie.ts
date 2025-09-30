@@ -6,15 +6,12 @@ export const useIsMobile = () => {
   useEffect(() => {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth <= 768)
-
     }
-      checkIsMobile()
+    checkIsMobile()
 
-      window.addEventListener("resize", checkIsMobile)
+    window.addEventListener("resize", checkIsMobile)
 
-      return () => window.removeEventListener("resize", checkIsMobile)
+    return () => window.removeEventListener("resize", checkIsMobile)
   }, [])
   return isMobile
 }
-
-
