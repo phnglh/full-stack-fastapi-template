@@ -1,5 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react"
-import { system } from "@chakra-ui/react/preset"
+import { ThemeProvider } from "@/contexts/theme-context"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import type { ReactNode } from "react"
 
@@ -11,9 +10,9 @@ const queryClient = new QueryClient()
 export default function Providers({ children }: Props) {
   return (
     <QueryClientProvider client={queryClient}>
-      <ChakraProvider value={system}>
-      {children}
-      </ChakraProvider>
+      <ThemeProvider>
+        {children}
+      </ThemeProvider>
     </QueryClientProvider>
   )
 }
