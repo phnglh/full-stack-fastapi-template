@@ -1,15 +1,15 @@
-import { useTheme } from '@/hooks/use-theme';
+import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react"
 import {
   Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui';
-import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react';
+} from "@/components/ui"
+import { useTheme } from "@/hooks/use-theme"
 
 const ThemeSwitcher = () => {
-  const { setTheme } = useTheme();
+  const { setTheme } = useTheme()
 
   return (
     <DropdownMenu>
@@ -17,7 +17,7 @@ const ThemeSwitcher = () => {
         <Button
           variant="ghost"
           className="size-9 p-0"
-          aria-label={'theme-toggle.toggle-theme'}
+          aria-label={"theme-toggle.toggle-theme"}
           data-testid="theme-toggle"
         >
           <SunIcon className="size-4 dark:hidden" />
@@ -27,29 +27,29 @@ const ThemeSwitcher = () => {
       <DropdownMenuContent align="end">
         <DropdownMenuItem
           className="gap-2"
-          onClick={() => setTheme('light')}
+          onClick={() => setTheme("light")}
           data-testid="theme-light-button"
         >
-          <SunIcon className="size-[18px]" /> {'theme-toggle.options.light'}
+          <SunIcon className="size-[18px]" /> {"theme-toggle.options.light"}
         </DropdownMenuItem>
         <DropdownMenuItem
           className="gap-2"
-          onClick={() => setTheme('dark')}
+          onClick={() => setTheme("dark")}
           data-testid="theme-dark-button"
         >
-          <MoonIcon className="size-[18px]" /> {'theme-toggle.options.dark'}
+          <MoonIcon className="size-[18px]" /> {"theme-toggle.options.dark"}
         </DropdownMenuItem>
         <DropdownMenuItem
           className="gap-2"
-          onClick={() => setTheme('system')}
+          onClick={() => setTheme("system")}
           data-testid="theme-system-button"
         >
-          <MonitorIcon className="size-[18px]" />{' '}
-          {'theme-toggle.options.system'}
+          <MonitorIcon className="size-[18px]" />{" "}
+          {"theme-toggle.options.system"}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-};
+  )
+}
 
-export default ThemeSwitcher;
+export default ThemeSwitcher

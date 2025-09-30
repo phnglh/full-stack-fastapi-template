@@ -7,8 +7,8 @@ export const Route = createFileRoute("/admin/")({
 function Dashboard() {
   return (
     <>
-          Hi, admin
-        <span>Welcome back, nice to see you again!</span>
+      Hi, admin
+      <span>Welcome back, nice to see you again!</span>
     </>
   )
 }

@@ -5,7 +5,5 @@ export const Route = createFileRoute("/_auth")({
 })
 
 function RouteComponent() {
-  return (
-          <Outlet />
-  )
+  return <Outlet />
 }

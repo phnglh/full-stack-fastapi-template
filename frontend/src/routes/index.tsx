@@ -1,5 +1,5 @@
-import ThemeSwitcher from "@/components/common/theme-switcher";
 import { createFileRoute } from "@tanstack/react-router"
+import ThemeSwitcher from "@/components/common/theme-switcher"
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -8,9 +8,9 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="">
-     <div>
-      <ThemeSwitcher/>
-    </div>
+      <div>
+        <ThemeSwitcher />
+      </div>
     </div>
   )
 }

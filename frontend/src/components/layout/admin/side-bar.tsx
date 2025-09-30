@@ -1,84 +1,54 @@
-import { Box, Flex, IconButton, Text } from "@chakra-ui/react"
 import { useState } from "react"
-
+import SidebarItems from "@/components/layout/admin/sideibar-items"
+import { Button } from "@/components/ui"
 import {
-  DrawerBackdrop,
-  DrawerBody,
-  DrawerCloseTrigger,
-  DrawerContent,
-  DrawerRoot,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
-import { TextAlignJustify } from "lucide-react"
-import SidebarItems from "./sideibar-items"
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false)
 
   return (
     <>
-      {/* Mobile */}
-      <DrawerRoot
-        placement="start"
-        open={open}
-        onOpenChange={(e) => setOpen(e.open)}
-      >
-        <DrawerBackdrop />
-        <DrawerTrigger asChild>
-          <IconButton
+      <DropdownMenu open={open} onOpenChange={(e) => setOpen(e.open)}>
+        <DropdownMenuTrigger asChild>
+          {/* <Button
             variant="ghost"
             color="inherit"
-            display={{ base: "flex", md: "none" }}
             aria-label="Open Menu"
-            position="absolute"
-            zIndex="100"
-            m={4}
           >
             <TextAlignJustify />
-          </IconButton>
-        </DrawerTrigger>
-        <DrawerContent maxW="xs">
-          <DrawerCloseTrigger />
-          <DrawerBody>
-            <Flex flexDir="column" justify="space-between">
-              <Box>
+          </Button> */}
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuContent>
+            <main className="flex justify-between">
+              <div>
                 <SidebarItems onClose={() => setOpen(false)} />
-                <Flex
-                  as="button"
-                  onClick={() => {
-                  }}
-                  alignItems="center"
-                  gap={4}
-                  px={4}
-                  py={2}
-                >
-                  <Text>Log Out</Text>
-                </Flex>
-              </Box>
-                {/* <Text fontSize="sm" p={2} truncate maxW="sm">
-                  Logged in as: {currentUser.email}
-                </Text> */}
-            </Flex>
-          </DrawerBody>
-          <DrawerCloseTrigger />
-        </DrawerContent>
-      </DrawerRoot>
+                <Button onClick={() => {}}>
+                  <span>Log Out</span>
+                </Button>
+              </div>
+            </main>
+          </DropdownMenuContent>
+        </DropdownMenuContent>
+      </DropdownMenu>
 
-      {/* Desktop */}
-
-      <Box
-        display={{ base: "none", md: "flex" }}
-        position="sticky"
-        bg="bg.subtle"
-        top={0}
-        minW="xs"
-        h="100vh"
-        p={4}
+      <div
+        className="
+    hidden md:flex
+    sticky top-0
+    min-w-[20rem] h-screen
+    bg-gray-50 dark:bg-gray-900
+    p-4
+  "
       >
-        <Box w="100%">
+        <div className="w-full">
           <SidebarItems />
-        </Box>
-      </Box>
+        </div>
+      </div>
     </>
   )
 }

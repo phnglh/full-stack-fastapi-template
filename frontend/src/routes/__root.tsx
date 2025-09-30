@@ -82,26 +82,31 @@ function RootComponent() {
 
   return (
     <>
-  {shouldShowNavigation && (
-    <header className="app-header">
-      <nav >
-        <Link to="/" color="white">Trang chủ</Link>
-        <Link to="/about" color="white">Dịch vụ</Link>
-        <Link to="/about" color="white">Liên hệ</Link>
-      </nav>
-    </header>
-  )}
+      {shouldShowNavigation && (
+        <header className="app-header">
+          <nav>
+            <Link to="/" color="white">
+              Trang chủ
+            </Link>
+            <Link to="/about" color="white">
+              Dịch vụ
+            </Link>
+            <Link to="/about" color="white">
+              Liên hệ
+            </Link>
+          </nav>
+        </header>
+      )}
 
-  <main className={shouldShowNavigation ? "main-content" : "main-full"}>
-    <Outlet />
-  </main>
+      <main className={shouldShowNavigation ? "main-content" : "main-full"}>
+        <Outlet />
+      </main>
 
-  {shouldShowNavigation && (
-    <footer className="app-footer">
-      <p>&copy; 2024 MyApp. All rights reserved.</p>
-    </footer>
-  )}
-
+      {shouldShowNavigation && (
+        <footer className="app-footer">
+          <p>&copy; 2024 MyApp. All rights reserved.</p>
+        </footer>
+      )}
 
       <Suspense>
         <TanStackDevtools />
