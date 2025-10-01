@@ -33,13 +33,10 @@
 //   notFoundComponent: () => <div>404 Not Found</div>,
 // })
 
-import {
-  createRootRoute,
-  Link,
-  Outlet,
-  useRouterState,
-} from "@tanstack/react-router"
+import { createRootRoute, Outlet, useRouterState } from "@tanstack/react-router"
 import React, { Suspense } from "react"
+import AppSidebar from "@/components/layout/app-sidebar"
+import { SidebarProvider } from "@/components/ui/sidebar"
 
 const loadDevtools = () =>
   Promise.all([
@@ -72,40 +69,22 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   const routerState = useRouterState()
-  const isAuthRoute =
-    routerState.location.pathname.includes("/login") ||
-    routerState.location.pathname.includes("/signup") ||
-    routerState.location.pathname.includes("/recover-password")
-  const isAdminRoute = routerState.location.pathname.includes("/admin")
 
-  const shouldShowNavigation = !isAuthRoute && !isAdminRoute
+  const isLmsRoute = routerState.location.pathname.startsWith("/")
 
   return (
     <>
-      {shouldShowNavigation && (
-        <header className="app-header">
-          <nav>
-            <Link to="/" color="white">
-              Trang chủ
-            </Link>
-            <Link to="/about" color="white">
-              Dịch vụ
-            </Link>
-            <Link to="/about" color="white">
-              Liên hệ
-            </Link>
-          </nav>
-        </header>
-      )}
-
-      <main className={shouldShowNavigation ? "main-content" : "main-full"}>
-        <Outlet />
-      </main>
-
-      {shouldShowNavigation && (
-        <footer className="app-footer">
-          <p>&copy; 2024 MyApp. All rights reserved.</p>
-        </footer>
+      {isLmsRoute ? (
+        <SidebarProvider>
+          <AppSidebar />
+          <main className=" p-6 flex-1 overflow-y-auto">
+            <Outlet />
+          </main>
+        </SidebarProvider>
+      ) : (
+        <main>
+          <Outlet />
+        </main>
       )}
 
       <Suspense>

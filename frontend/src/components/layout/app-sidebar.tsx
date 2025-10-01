@@ -1,58 +1,86 @@
-import { TextAlignJustify } from "lucide-react"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { Link } from "@tanstack/react-router"
+import type { LucideIcon } from "lucide-react"
 import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import SidebarItems from "./sidebar-items"
+  Calendar,
+  House,
+  LayoutList,
+  Settings,
+  TextAlignJustify,
+} from "lucide-react"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarTrigger,
+} from "@/components/ui/sidebar"
 
-const AppSideBar = () => {
-  const [open, setOpen] = useState(false)
+interface SidebarItem {
+  icon: LucideIcon
+  title: string
+  path: string
+}
 
+interface SidebarGroupData {
+  title: string
+  items: SidebarItem[]
+}
+
+const sidebarData: SidebarGroupData[] = [
+  {
+    title: "",
+    items: [{ icon: House, title: "Tổng quan", path: "/" }],
+  },
+  {
+    title: "Đào tạo",
+    items: [
+      { icon: Calendar, title: "Quản lý ca", path: "/schedule" },
+      { icon: LayoutList, title: "Lịch học", path: "/" },
+      { icon: Settings, title: "Bài tập", path: "/" },
+    ],
+  },
+  {
+    title: "Hồ sơ",
+    items: [
+      { icon: House, title: "Thông tin cá nhân", path: "/" },
+      { icon: Settings, title: "Cài đặt", path: "/" },
+    ],
+  },
+]
+
+const AppSidebar = () => {
   return (
     <>
-      <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger className="justify-start md:hidden" asChild>
-          <Button type="button" variant="ghost" aria-label="Open Menu">
-            <TextAlignJustify />
-          </Button>
-        </SheetTrigger>
+      <SidebarTrigger className="md:hidden absolute">
+        <TextAlignJustify />
+      </SidebarTrigger>
 
-        <SheetContent side="left" className="w-72 p-4">
-          <SheetHeader>
-            <SheetTitle />
-            <SheetDescription />
-          </SheetHeader>
-
-          <div className="flex flex-col justify-between h-full">
-            <div>
-              <SidebarItems onClose={() => setOpen(false)} />
-              <button
-                type="button"
-                onClick={() => console.log("logout")}
-                className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-              >
-                <span>Log Out</span>
-              </button>
-            </div>
-          </div>
-          <SheetClose />
-        </SheetContent>
-      </Sheet>
-
-      <aside className="hidden md:flex sticky top-0 min-w-[16rem] h-screen bg-gray-50 dark:bg-gray-900 p-4">
-        <div className="w-full">
-          <SidebarItems />
-        </div>
-      </aside>
+      <Sidebar>
+        <SidebarContent>
+          {sidebarData.map((group) => (
+            <SidebarGroup key={group.title} className="p-1 mb-0">
+              <SidebarGroupLabel>{group.title}</SidebarGroupLabel>
+              <SidebarMenu>
+                {group.items.map(({ icon: Icon, title, path }) => (
+                  <SidebarMenuItem key={title}>
+                    <SidebarMenuButton asChild>
+                      <Link to={path} className="flex items-center">
+                        <Icon />
+                        {title}
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroup>
+          ))}
+        </SidebarContent>
+      </Sidebar>
     </>
   )
 }
 
-export default AppSideBar
+export default AppSidebar
